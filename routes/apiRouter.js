@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const { workerData } = require('worker_threads');
 var notes = require('../db/db.json');
 
 // Get notes
@@ -14,7 +13,7 @@ router.post('/notes', (req, res) => {
     let newNote = req.body;
     
     // give every note a unique id that will always be different
-    newNote["id"] = Date.now();            
+    newNote.id = Date.now();            
     
     notes.push(newNote);
 

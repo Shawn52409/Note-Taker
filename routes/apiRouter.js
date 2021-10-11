@@ -12,7 +12,6 @@ router.get('/notes', (req, res) => {
 // Create new note
 router.post('/notes', (req, res) => {
     let newNote = req.body;
-    // console.log(req.body);
     
     // give every note a unique id that will always be different
     newNote["id"] = Date.now();            
@@ -27,15 +26,10 @@ router.post('/notes', (req, res) => {
 // delete note at specified id
 router.delete('/notes/:id', (req, res) => {
     res.send('DELETE request at /api/notes/:id')
-    console.log(req.params);
-    console.log(typeof(req.params.id));
-    
+
     notes = notes.filter(notes => notes.id !== parseInt(req.params.id));
     console.log(notes);
-    // for (i=0; i<notes.length; i++){
-    //     console.log(notes[i].id);
-    // }
-    // notes.splice(req.params, 1);
+
     writeNotes();
 });
 

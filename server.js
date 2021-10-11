@@ -23,8 +23,6 @@ app.use(express.static('public'));
 app.use('/api', apiRouter);
 app.use('/', htmlRouter);
 
-
-
 // Listener
 app.listen(PORT, () => {
     console.log(`Server is listening at http://localhost:${PORT}`)

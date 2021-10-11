@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const { workerData } = require('worker_threads');
 var notes = require('../db/db.json');
 
 // Get notes
@@ -27,10 +28,14 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     res.send('DELETE request at /api/notes/:id')
     console.log(req.params);
-    for (i=0; i<notes.length; i++){
-        console.log(notes[i].id);
-    }
-    notes.splice(req.params, 1);
+    console.log(typeof(req.params.id));
+    
+    notes = notes.filter(notes => notes.id !== parseInt(req.params.id));
+    console.log(notes);
+    // for (i=0; i<notes.length; i++){
+    //     console.log(notes[i].id);
+    // }
+    // notes.splice(req.params, 1);
     writeNotes();
 });
 

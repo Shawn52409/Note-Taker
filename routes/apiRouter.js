@@ -32,7 +32,7 @@ router.delete('/notes/:id', (req, res) => {
     writeNotes();
 });
 
-
+// function used to write note to db.json file
 const writeNotes = () => {
     fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
         if (err) {
